@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Manvith, MCA student and full-stack software developer skilled in React, Node.js, Python, PHP, and more." />
+  <title>Manvith | Software Developer Portfolio</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            slate: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              400: '#94a3b8',
+              500: '#64748b',
+              600: '#475569',
+              700: '#334155',
+              800: '#1e293b',
+              900: '#0f172a'
+            },
+            cyan: {
+              50: '#ecfeff',
+              100: '#cffafe',
+              200: '#a5f3fc',
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+              700: '#0e7490',
+              800: '#155e75',
+              900: '#164e63'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .gradient-radial {
+      background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+    }
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #1e293b; }
+    ::-webkit-scrollbar-thumb { background: #22d3ee; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #67e8f9; }
+
+    /* Fade-in Animation */
+    @keyframes fade-in {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+      animation: fade-in 0.8s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-slate-900 text-gray-100">
+
+  <!-- Modern Navigation Bar -->
+  <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-slate-900/60 border-b border-cyan-500/20 shadow-lg transition-all duration-300" role="navigation">
+    <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+      <div class="text-2xl font-bold text-cyan-400 cursor-default select-none transition-all duration-300 hover:text-cyan-300">Manvith</div>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+        <a href="#about" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">About</a>
+        <a href="#skills" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Skills</a>
+        <a href="#projects" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Projects</a>
+        <a href="#experience" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Experience</a>
+        <a href="#education" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Education</a>
+        <a href="#certificates" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Certificates</a>
+        <a href="#contact" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Contact</a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden flex items-center justify-center p-2 rounded-full text-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300">
+        <svg id="nav-toggle-open" class="block h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="nav-toggle-close" class="hidden h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 bg-slate-900/80 backdrop-blur-lg border-t border-cyan-500/20">
+      <div class="flex flex-col px-4 py-4 space-y-3 text-center">
+        <a href="#about" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">About</a>
+        <a href="#skills" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Skills</a>
+        <a href="#projects" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Projects</a>
+        <a href="#experience" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Experience</a>
+        <a href="#education" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Education</a>
+        <a href="#certificates" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Certificates</a>
+        <a href="#contact" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-24">
+      <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
+        <div class="md:w-1/2 space-y-4 sm:space-y-6">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-100">
+            Hi, I'm <span class="text-cyan-400">Manvith</span>
+          </h1>
+          <p class="text-base sm:text-lg text-gray-400 leading-relaxed">
+            MCA student passionate about full-stack software development, with practical experience in modern technologies for building impactful applications.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#contact" class="inline-flex items-center px-6 py-2 sm:px-8 sm:py-3 bg-cyan-400 text-slate-900 font-medium rounded-lg hover:bg-cyan-300 transition-colors duration-200 shadow-lg hover:shadow-cyan-400/25 text-sm sm:text-base">
+              Contact Me
+            </a>
+            <a href="Assets/Manvith-Resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2 sm:px-8 sm:py-3 bg-cyan-400 text-slate-900 font-medium rounded-lg hover:bg-cyan-300 transition-colors duration-200 shadow-lg hover:shadow-cyan-400/25 text-sm sm:text-base">
+              Resume
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center mt-4 sm:mt-6 md:mt-0">
+          <div class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full border-2 border-cyan-400/30 flex items-center justify-center shadow-md hover:shadow-cyan-400/30 transition-shadow duration-300">
+            <img 
+              src="Assets/Manvith-profile.jpg"
+              alt="Manvith's Profile Picture"
+              class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 rounded-full object-cover border border-cyan-400/20"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-100 text-center md:text-left">About Me</h2>
+        <p class="text-base sm:text-lg text-gray-400 leading-relaxed">
+          I am an MCA student (2023–2025) at St. Joseph Engineering College, passionate about software development. Skilled in building academic and real-world projects that showcase teamwork, problem-solving, and adaptability. Always eager to learn new technologies and contribute to creating meaningful, impactful solutions.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-100 text-center">Technical Skills</h2>
+
+      <div class="max-w-6xl mx-auto space-y-8 sm:space-y-10 md:space-y-12">
+
+        <!-- Languages -->
+        <div>
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 md:mb-6 text-cyan-400 border-b border-cyan-400 pb-2 max-w-max mx-auto md:mx-0">Languages</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 sm:gap-6 md:gap-8">
+            <!-- HTML -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/html.png" alt="HTML Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">HTML</p>
+            </div>
+            <!-- CSS -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/css.png" alt="CSS Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">CSS</p>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/javascript.png" alt="JavaScript Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">JavaScript</p>
+            </div>
+            <!-- PHP -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/php.png" alt="PHP Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">PHP</p>
+            </div>
+
+            <!-- Python -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/python.png" alt="Python Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">Python</p>
+            </div>
+
+            <!-- Java -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/java.png" alt="Java Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">Java</p>
+            </div>
+            <!-- C -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/c.svg" alt="C Programming Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">C</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Databases -->
+        <div>
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 md:mb-6 text-emerald-400 border-b border-emerald-400 pb-2 max-w-max mx-auto md:mx-0">Databases</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
+            <!-- SQL -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-emerald-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/sql.png" alt="SQL Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-emerald-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-emerald-300">SQL</p>
+            </div>
+
+            <!-- MySQL -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-emerald-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/mysql.png" alt="MySQL Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-emerald-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-emerald-300">MySQL</p>
+            </div>
+
+            <!-- MongoDB -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-emerald-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/mongodb.png" alt="MongoDB Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-emerald-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-emerald-300">MongoDB</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools & Frameworks -->
+        <div>
+          <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 md:mb-6 text-orange-400 border-b border-orange-400 pb-2 max-w-max mx-auto md:mx-0">Tools & Frameworks</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
+            <!-- Git -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/git.png" alt="Git Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Git</p>
+            </div>
+            <!-- GitHub -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/github.png" alt="GitHub Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">GitHub</p>
+            </div>
+
+            <!-- Docker -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/docker.png" alt="Docker Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Docker</p>
+            </div>
+            <!-- Tailwind -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/tailwindcss.svg" alt="Tailwind CSS Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Tailwind</p>
+            </div>
+
+            <!-- Bootstrap -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/bootstrap.png" alt="Bootstrap Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Bootstrap</p>
+            </div>
+
+            <!-- React -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/react.png" alt="React Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">React</p>
+            </div>
+
+            <!-- React Native -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/react-native.svg" alt="React Native Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">React Native</p>
+            </div>
+
+            <!-- Express.js -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/express.png" alt="Express.js Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Express.js</p>
+            </div>
+
+            <!-- postman -->
+            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
+                <img src="Assets/postman.png" alt="postman Logo"
+                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
+              </div>
+              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Postman</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <!-- Soft Skills -->
+      <div class="border-t border-slate-700 pt-4 sm:pt-6 mt-6 sm:mt-8">
+        <h3 class="text-xl sm:text-2xl md:text-3xl text-gray-100 mb-3 sm:mb-4 text-center md:text-left">Soft Skills</h3>
+        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Problem Solving</span>
+          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Team Collaboration</span>
+          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Time Management</span>
+          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Adaptability</span>
+          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Self-Motivation</span>
+        </div>
+      </div>
+    </section>
+    <!-- Projects Section -->
+    <section id="projects" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-12 text-gray-100 text-center">Projects</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+        <!-- Project 1 -->
+        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/10 group">
+          <div class="aspect-video overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1742069207641-4e523bf7060c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwdHJhbnNwb3J0JTIwc3lzdGVtJTIwd2ViJTIwZGV2ZWxvcG1lbnR8ZW58MXx8fHwxNzU1ODc4OTA3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="College Transport System"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-100">College Transport System</h3>
+            <p class="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4 leading-relaxed">A web-based system for managing college transport, bookings, schedules, and route tracking.</p>
+            <div class="flex flex-wrap gap-2 mb-3 sm:mb-6">
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">PHP</span>
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">MySQL</span>
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">JavaScript</span>
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">HTML</span>
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">CSS</span>
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">Bootstrap</span>
+            </div>
+            <a 
+              href="https://github.com/Manvith-003/collegetransport"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-200 font-medium text-sm sm:text-base"
+            >
+              View on GitHub →
+            </a>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/10 group">
+          <div class="aspect-video overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1659353587228-5dbbebb5d98f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjBwbGF0Zm9ybSUyMG1vYmlsZSUyMGFwcHxlbnwxfHx8fDE3NTU4Nzg5MTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+              alt="Build-Connect"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-100">Build-Connect</h3>
+            <p class="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4 leading-relaxed">A digital platform connecting buyers, sellers, contractors & site scouts for end-to-end land and construction solutions, including real-time chat.</p>
+            <div class="flex flex-wrap gap-2 mb-3 sm:mb-6">
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">React Native</span>
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">Node.js Microservices</span>
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">MongoDB</span>
+              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">Redis</span>
+            </div>
+            <a 
+              href="https://github.com/Manvith-003"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-200 font-medium text-sm sm:text-base"
+            >
+              View on GitHub →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Experience Section -->
+    <section id="experience" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+      <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 md:p-8 border border-slate-700">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-100 text-center md:text-left">Internship Experience</h2>
+        <div class="space-y-4 sm:space-y-6">
+          <div class="border-l-4 border-cyan-400 pl-3 sm:pl-4 md:pl-6">
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-100 mb-1 sm:mb-2">Software Development Intern</h3>
+            <div class="text-cyan-400 font-medium mb-1 sm:mb-3 text-sm sm:text-base">
+              Ukshati Technologies Pvt. Ltd., Mangalore
+            </div>
+            <div class="text-gray-400 mb-2 sm:mb-4 text-sm sm:text-base">May 2025 - Jul 2025</div>
+            <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+              <li class="flex items-start">
+                <span class="text-cyan-400 mr-2">•</span>
+                Developed REST APIs (Node.js/Express.js) for ERP Purchase Order Module.
+              </li>
+              <li class="flex items-start">
+                <span class="text-cyan-400 mr-2">•</span>
+                Built responsive UIs using Next.js and Tailwind CSS.
+              </li>
+              <li class="flex items-start">
+                <span class="text-cyan-400 mr-2">•</span>
+                Optimized MySQL queries, deployed with Docker, and implemented CI/CD (GitHub Actions).
+              </li>
+            </ul>
+          </div>
+          <div class="border-l-4 border-cyan-400 pl-3 sm:pl-4 md:pl-6">
+            <h3 class="text-lg sm:text-xl font-semibold text-gray-100 mb-1 sm:mb-2">Software Development Intern</h3>
+            <div class="text-cyan-400 font-medium mb-1 sm:mb-3 text-sm sm:text-base">St Joseph Engineering College, Department of Computer Applications, Mangaluru</div>
+            <div class="text-gray-400 mb-2 sm:mb-4 text-sm sm:text-base">October 2024 - November 2024</div>
+            <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+              <li class="flex items-start">
+                <span class="text-cyan-400 mr-2">•</span>
+                Completed internship on College Transport Management System.
+              </li>
+              <li class="flex items-start">
+                <span class="text-cyan-400 mr-2">•</span>
+                Applied programming and software development skills during MCA.
+              </li>
+              <li class="flex items-start">
+                <span class="text-cyan-400 mr-2">•</span>
+                Contributed to project development.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Education Section -->
+    <section id="education" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-12 text-gray-100 text-center">Education</h2>
+      <div class="space-y-4 sm:space-y-6">
+        <div class="bg-slate-800/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-200">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+            <div class="flex-1">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1">Master of Computer Application</h3>
+              <p class="text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">St. Joseph Engineering College</p>
+              <p class="text-cyan-400 font-medium text-sm sm:text-base">7.71 CGPA</p>
+            </div>
+            <div class="text-gray-400 sm:text-right text-sm sm:text-base">2023 - 2025</div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-200">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+            <div class="flex-1">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1">Bachelor of Computer Application</h3>
+              <p class="text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">Sri Ramakrishna College</p>
+              <p class="text-cyan-400 font-medium text-sm sm:text-base">75.37%</p>
+            </div>
+            <div class="text-gray-400 sm:text-right text-sm sm:text-base">2020 - 2023</div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-200">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+            <div class="flex-1">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1">PUC</h3>
+              <p class="text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">St. Sebastian College</p>
+              <p class="text-cyan-400 font-medium text-sm sm:text-base">74.66%</p>
+            </div>
+            <div class="text-gray-400 sm:text-right text-sm sm:text-base">2019 - 2020</div>
+          </div>
+        </div>
+
+        <div class="bg-slate-800/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-200">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+            <div class="flex-1">
+              <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1">SSLC</h3>
+              <p class="text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">St. Sebastian High School</p>
+              <p class="text-cyan-400 font-medium text-sm sm:text-base">82.4%</p>
+            </div>
+            <div class="text-gray-400 sm:text-right text-sm sm:text-base">2016 - 2018</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certificates -->
+    <section id="certificates" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-12 text-gray-100 text-center">Certificates</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <!-- Certificate 1: Javascript -->
+       <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
+           <img src="Assets/Cirtificate/javascript.jpg" alt="JavaScript Certificate" class="w-full h-56 object-contain object-center bg-white" />
+          <div class="p-3 sm:p-4 md:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">Programming with JavaScript</h3>
+            <p class="text-gray-400 mb-1 text-sm sm:text-base">Meta (Coursera)</p>
+            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">July 2024</p>
+          </div>
+        </div>
+
+<!-- Certificate 2: HTML, CSS, JavaScript -->
+        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
+          <img src="Assets/Cirtificate/html,css, javascript.jpg" alt="web-based Certificate" class="w-full h-56 object-contain object-center bg-white" />
+          <div class="p-3 sm:p-4 md:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">Intro to Web Development with HTML, CSS, JavaScript</h3>
+            <p class="text-gray-400 mb-1 text-sm sm:text-base">IBM (Coursera)</p>
+            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">June 2024</p>
+          </div>
+        </div>
+
+        <!-- Certificate 3: Committee Head at Joshiana -->
+        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
+           <img src="Assets/Cirtificate/joshiana.jpg" alt="Joshiana Certificate" class="w-full h-56 object-contain object-center bg-white" />
+          <div class="p-3 sm:p-4 md:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">Committee Head, Stage & Decoration (Joshiana 13.0)</h3>
+            <p class="text-gray-400 mb-1 text-sm sm:text-base">St Joseph Engineering College</p>
+            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">2024</p>
+          </div>
+        </div>
+        <!-- Certificate 4: Aws -->
+ <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
+          <img src="Assets/Cirtificate/AWS.jpg" alt="AWS Certificate" class="w-full h-56 object-contain object-center bg-white" />
+          <div class="p-3 sm:p-4 md:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">AWS Unleashed: Hands-On Cloud Training</h3>
+            <p class="text-gray-400 mb-1 text-sm sm:text-base">St Joseph Engineering College</p>
+            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">8-10 July 2024</p>
+          </div>
+        </div>
+
+        <!-- Certificate 5: Flipkart Grid 6.0 Quiz -->
+        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
+           <img src="Assets/Cirtificate/Flipkart.jpg" alt="Flipkart Certificate" class="w-full h-56 object-contain object-center bg-white" />
+          <div class="p-3 sm:p-4 md:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">Flipkart GRID 6.0 Software Development Track</h3>
+            <p class="text-gray-400 mb-1 text-sm sm:text-base">Flipkart</p>
+            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">July 2024</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gradient-to-b from-slate-900 to-slate-800 flex flex-col items-center justify-center px-4 py-8 sm:py-12 md:py-16 relative flex-grow">
+      <div class="absolute inset-0 bg-gradient-radial from-cyan-400/5 via-transparent to-transparent"></div>
+      <div class="relative z-10 flex flex-col items-center max-w-4xl text-center">
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-cyan-400">
+          Connect with me!
+        </h2>
+        <p class="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 md:mb-12 leading-relaxed">
+          Hi there! I'm passionate about creating meaningful connections. Feel free to reach out to me for collaborations, project inquiries, or just to say hello.
+        </p>
+        
+        <!-- Navigation Links -->
+        <nav class="flex justify-center flex-wrap gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-12 text-gray-400 text-sm sm:text-base" aria-label="Footer navigation">
+          <a href="#about" class="hover:text-cyan-400 transition-colors duration-200">About</a>
+          <a href="#skills" class="hover:text-cyan-400 transition-colors duration-200">Skills</a>
+          <a href="#projects" class="hover:text-cyan-400 transition-colors duration-200">Projects</a>
+          <a href="#experience" class="hover:text-cyan-400 transition-colors duration-200">Experience</a>
+          <a href="#education" class="hover:text-cyan-400 transition-colors duration-200">Education</a>
+          <a href="#certificates" class="hover:text-cyan-400 transition-colors duration-200">Certificates</a>
+          <a href="#contact" class="hover:text-cyan-400 transition-colors duration-200">Contact</a>
+        </nav>
+        <!-- Social Links -->
+        <div class="flex justify-center space-x-6 sm:space-x-8 text-cyan-400">
+          <!-- <a 
+            href="https://twitter.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Twitter"
+            class="hover:text-cyan-300 hover:scale-110 transition-all duration-200"
+          >
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true">
+              <path d="M19.633 7.997c.013.18.013.36.013.54 0 5.5-4.19 11.85-11.85 11.85-2.36 0-4.56-.69-6.41-1.89a8.43 8.43 0 0 0 6.21-1.74 4.237 4.237 0 0 1-3.95-2.93c.26.038.51.064.78.064.37 0 .74-.051 1.08-.14A4.22 4.22 0 0 1 2.8 12.09v-.05c.7.39 1.5.62 2.35.65a4.231 4.231 0 0 1-1.88-3.52c0-.78.21-1.51.57-2.14a11.977 11.977 0 0 0 8.69 4.41 4.778 4.778 0 0 1-.1-.97 4.22 4.22 0 0 1 7.3-3.84 8.43 8.43 0 0 0 2.69-1.03 4.22 4.22 0 0 1-1.85 2.33 8.478 8.478 0 0 0 2.44-.66 9.07 9.07 0 0 1-2.11 2.19z"/>
+            </svg>
+          </a> -->
+          <a 
+            href="https://github.com/Manvith-003"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="hover:text-cyan-300 hover:scale-110 transition-all duration-200"
+          >
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true">
+              <path d="M12 2C6.478 2 2 6.478 2 12c0 4.418 2.867 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.239-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.455-1.159-1.11-1.468-1.11-1.468-.909-.621.07-.609.07-.609 1.004.07 1.533 1.032 1.533 1.032.892 1.53 2.341 1.089 2.911.833.092-.647.35-1.09.636-1.342-2.221-.254-4.555-1.111-4.555-4.944 0-1.091.39-1.983 1.029-2.681-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025a9.563 9.563 0 0 1 2.5-.336 9.5 9.5 0 0 1 2.499.336c1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.698 1.028 1.59 1.028 2.681 0 3.844-2.337 4.688-4.566 4.938.359.309.679.919.679 1.852 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C19.135 20.163 22 16.418 22 12c0-5.522-4.478-10-10-10z"/>
+            </svg>
+          </a>
+          <a 
+            href="mailto:manvithpoojary63@gmail.com"
+            rel="noopener noreferrer"
+            aria-label="Email"
+            class="hover:text-cyan-300 hover:scale-110 transition-all duration-200"
+          >
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
+            </svg>
+          </a>
+          <a 
+            href="https://www.linkedin.com/in/manvithpoojary"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            class="hover:text-cyan-300 hover:scale-110 transition-all duration-200"
+          >
+            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true">
+              <path d="M19 0h-14c-2.762 0-5 2.238-5 5v14c0 2.762 2.238 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.762-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.273c-.966 0-1.75-.783-1.75-1.75 0-.966.784-1.75 1.75-1.75.967 0 1.75.784 1.75 1.75 0 .967-.783 1.75-1.75 1.75zm13.5 11.273h-3v-5.454c0-1.299-.025-2.974-1.814-2.974-1.814 0-2.093 1.418-2.093 2.887v5.541h-3v-10h2.881v1.367h.041c.401-.757 1.382-1.556 2.843-1.556 3.039 0 3.601 2.002 3.601 4.604v5.585z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // Navbar background change on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) {
+        nav.classList.add('bg-slate-900/80', 'shadow-cyan-500/20');
+      } else {
+        nav.classList.remove('bg-slate-900/80', 'shadow-cyan-500/20');
+      }
+    });
+
+    // Fade-in animation observer
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('animate-fade-in');
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+    // Mobile menu toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navOpenIcon = document.getElementById('nav-toggle-open');
+    const navCloseIcon = document.getElementById('nav-toggle-close');
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('max-h-0');
+      mobileMenu.classList.toggle('max-h-screen');
+      navToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      navOpenIcon.classList.toggle('hidden');
+      navCloseIcon.classList.toggle('hidden');
+      navOpenIcon.classList.toggle('rotate-180');
+      navCloseIcon.classList.toggle('rotate-180');
+    });
+
+    // Close menu when clicking a navigation link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden', 'max-h-0');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navOpenIcon.classList.remove('hidden');
+        navCloseIcon.classList.add('hidden');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      const isClickInsideMenu = mobileMenu.contains(event.target);
+      const isClickOnToggle = navToggle.contains(event.target);
+      if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden', 'max-h-0');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navOpenIcon.classList.remove('hidden');
+        navCloseIcon.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
