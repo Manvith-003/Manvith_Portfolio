@@ -2,710 +2,905 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Manvith, MCA student and full-stack software developer skilled in React, Node.js, Python, PHP, and more." />
-  <title>Manvith | Portfolio</title>
-  <link rel="icon" type="image/x-icon" href="Assets/online-resume.png">
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            slate: {
-              50: '#f8fafc',
-              100: '#f1f5f9',
-              200: '#e2e8f0',
-              300: '#cbd5e1',
-              400: '#94a3b8',
-              500: '#64748b',
-              600: '#475569',
-              700: '#334155',
-              800: '#1e293b',
-              900: '#0f172a'
-            },
-            cyan: {
-              50: '#ecfeff',
-              100: '#cffafe',
-              200: '#a5f3fc',
-              300: '#67e8f9',
-              400: '#22d3ee',
-              500: '#06b6d4',
-              600: '#0891b2',
-              700: '#0e7490',
-              800: '#155e75',
-              900: '#164e63'
-            }
-          }
-        }
-      }
-    }
-  </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Manvith Poojary — Full Stack Developer. React, Node.js, Laravel, Next.js." />
+  <title>Manvith Poojary · Full Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
   <style>
-    .gradient-radial {
-      background: radial-gradient(ellipse at center, var(--tw-gradient-stops));
-    }
-    html { scroll-behavior: smooth; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #1e293b; }
-    ::-webkit-scrollbar-thumb { background: #22d3ee; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #67e8f9; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Fade-in Animation */
-    @keyframes fade-in {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+    :root {
+      --bg:         #07090d;
+      --bg-card:    #0e1318;
+      --bg-card2:   #131a21;
+      --border:     rgba(255,255,255,0.06);
+      --border-h:   rgba(79,195,247,0.25);
+      --accent:     #4fc3f7;
+      --accent-d:   rgba(79,195,247,0.1);
+      --purple:     #818cf8;
+      --green:      #34d399;
+      --green-d:    rgba(52,211,153,0.09);
+      --text:       #e2e8f0;
+      --text-2:     #94a3b8;
+      --text-3:     #475569;
+      --ff-h:       'Plus Jakarta Sans', sans-serif;
+      --ff-b:       'Inter', sans-serif;
+      --max:        1160px;
+      --r:          12px;
     }
-    .animate-fade-in {
-      animation: fade-in 0.8s ease-out forwards;
+
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: var(--ff-b); font-size: 15px; line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── BG ── */
+    .bg-grid {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(79,195,247,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,195,247,0.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .orb {
+      position: fixed; border-radius: 50%; filter: blur(130px);
+      pointer-events: none; z-index: 0; opacity: 0.1;
+    }
+    .orb-a { width: 650px; height: 650px; background: var(--purple); top: -280px; right: -180px; }
+    .orb-b { width: 500px; height: 500px; background: var(--accent); bottom: 5%; left: -180px; }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 22px 0; transition: all 0.3s; border-bottom: 1px solid transparent;
+    }
+    #nav.stuck {
+      background: rgba(7,9,13,0.9); backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-color: var(--border); padding: 14px 0;
+    }
+    .nav-w {
+      max-width: var(--max); margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      font-family: var(--ff-h); font-weight: 800; font-size: 17px;
+      color: var(--text); text-decoration: none; letter-spacing: -0.3px;
+    }
+    .nav-brand em { color: var(--accent); font-style: normal; }
+    .nav-ul { display: flex; gap: 26px; list-style: none; }
+    .nav-ul a {
+      color: var(--text-2); text-decoration: none; font-size: 13.5px; font-weight: 500;
+      letter-spacing: 0.01em; transition: color 0.2s; position: relative;
+    }
+    .nav-ul a::after {
+      content: ''; position: absolute; left: 0; bottom: -3px;
+      width: 0; height: 1px; background: var(--accent); transition: width 0.25s;
+    }
+    .nav-ul a:hover { color: var(--text); }
+    .nav-ul a:hover::after { width: 100%; }
+    .nav-hire {
+      background: var(--accent-d); border: 1px solid rgba(79,195,247,0.18);
+      color: var(--accent) !important; padding: 7px 16px; border-radius: 7px;
+    }
+    .nav-hire::after { display: none !important; }
+    .nav-hire:hover { background: rgba(79,195,247,0.18) !important; }
+
+    .ham {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .ham span { display: block; width: 22px; height: 1.5px; background: var(--text); border-radius: 1px; transition: all 0.3s; }
+    .ham.o span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .ham.o span:nth-child(2) { opacity: 0; }
+    .ham.o span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    #mob {
+      display: none; position: fixed; inset: 0; z-index: 199;
+      background: rgba(7,9,13,0.97); backdrop-filter: blur(20px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 26px;
+    }
+    #mob.o { display: flex; }
+    #mob a {
+      font-family: var(--ff-h); font-size: 26px; font-weight: 700;
+      color: var(--text-2); text-decoration: none; transition: color 0.2s;
+    }
+    #mob a:hover { color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
+    section { padding: 96px 0; }
+
+    /* ── EYEBROW ── */
+    .eye {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .eye::before { content: ''; display: block; width: 18px; height: 1px; background: var(--accent); }
+
+    /* ── SECTION TITLE ── */
+    .st {
+      font-family: var(--ff-h); font-size: clamp(26px, 3.2vw, 38px);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1;
+      color: var(--text); margin-bottom: 48px;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      border-radius: 9px; font-weight: 600; font-size: 14px;
+      text-decoration: none; transition: all 0.2s; white-space: nowrap;
+      font-family: var(--ff-h);
+    }
+    .btn-s { background: var(--accent); color: #07090d; padding: 13px 24px; }
+    .btn-s:hover { background: #81d4fa; transform: translateY(-2px); box-shadow: 0 10px 28px rgba(79,195,247,0.25); }
+    .btn-g { background: transparent; color: var(--text); padding: 12px 22px; border: 1px solid var(--border); }
+    .btn-g:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.03); transform: translateY(-2px); }
+
+    /* ── HERO ── */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding-top: 96px; padding-bottom: 96px; text-align: center; position: relative; }
+    #hero .wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .hero-in { max-width: 800px; display: flex; flex-direction: column; align-items: center; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-d); border: 1px solid rgba(52,211,153,0.2);
+      border-radius: 100px; padding: 5px 14px; font-size: 12.5px;
+      color: var(--green); font-weight: 500; margin-bottom: 26px;
+      font-family: var(--ff-h);
+      animation: fu 0.5s ease both;
+    }
+    .bdot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    .hero-name {
+      font-family: var(--ff-h); font-weight: 800; line-height: 1.04;
+      letter-spacing: -0.04em; margin-bottom: 10px;
+      font-size: clamp(48px, 8vw, 86px);
+      animation: fu 0.5s 0.08s ease both;
+    }
+    .hero-name .gr {
+      background: linear-gradient(120deg, var(--accent) 0%, var(--purple) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-role {
+      font-family: var(--ff-h); font-size: clamp(16px, 2.5vw, 22px); font-weight: 500;
+      color: var(--text-2); margin-bottom: 22px; animation: fu 0.5s 0.14s ease both;
+    }
+    .hero-desc {
+      font-size: 16px; color: var(--text-2); line-height: 1.8;
+      max-width: 600px; margin-bottom: 36px; animation: fu 0.5s 0.2s ease both;
+    }
+    .hero-btns {
+      display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 46px; justify-content: center;
+      animation: fu 0.5s 0.26s ease both;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
+      animation: fu 0.5s 0.32s ease both;
+    }
+    .hm-item {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--text-3); font-size: 13px; text-decoration: none; transition: color 0.2s;
+    }
+    .hm-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+    .hm-item:hover { color: var(--accent); }
+
+    .scroll-h {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      color: var(--text-3); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .scroll-l {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--text-3), transparent);
+      animation: sg 1.6s ease-in-out infinite;
+    }
+    @keyframes sg {
+      0%   { transform: scaleY(0); transform-origin: top; }
+      50%  { transform: scaleY(1); transform-origin: top; }
+      51%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+    @keyframes fu { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ── ABOUT ── */
+    #about { background: linear-gradient(180deg, transparent, rgba(79,195,247,0.013) 50%, transparent); }
+    .about-g { display: grid; grid-template-columns: 1fr 380px; gap: 68px; align-items: start; }
+    .about-t .st { margin-bottom: 18px; }
+    .about-t p { color: var(--text-2); font-size: 15.5px; line-height: 1.8; margin-bottom: 14px; }
+    .about-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
+    .al {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--text-3); font-size: 13px; text-decoration: none; transition: color 0.2s;
+    }
+    .al svg { width: 14px; height: 14px; }
+    .al:hover { color: var(--accent); }
+
+    .ic-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    .ic {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 20px; transition: border-color 0.3s, transform 0.3s;
+    }
+    .ic:hover { border-color: var(--border-h); transform: translateY(-3px); }
+    .ic-i { margin-bottom: 9px; color: var(--accent); }
+    .ic-i svg { width: 22px; height: 22px; }
+    .ic-l { font-size: 10.5px; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+    .ic-v { font-family: var(--ff-h); font-size: 13.5px; font-weight: 700; color: var(--text); }
+    .ic.s2 { grid-column: 1 / -1; }
+
+    /* ── SKILLS ── */
+    .sg-wrap { display: flex; flex-direction: column; gap: 32px; }
+    .sg-lbl { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-3); margin-bottom: 14px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px;
+      padding: 8px 16px; font-size: 13.5px; font-weight: 500; color: var(--text-2);
+      transition: all 0.2s; cursor: default;
+    }
+    .pill i, .pill svg { font-size: 18px; width: 18px; height: 18px; display: flex; align-items: center; justify-content: center; }
+    .pill:hover { border-color: var(--border-h); color: var(--accent); background: var(--accent-d); transform: translateY(-2px); }
+    .p-a { border-color: rgba(79,195,247,0.15); color: var(--accent); }
+    .p-p { border-color: rgba(129,140,248,0.15); color: var(--purple); }
+    .p-g { border-color: rgba(52,211,153,0.15); color: var(--green); }
+    .sg-div { height: 1px; background: var(--border); }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: linear-gradient(180deg, transparent, rgba(79,195,247,0.013) 50%, transparent); }
+    .tl { position: relative; display: flex; flex-direction: column; }
+    .tl::before { content: ''; position: absolute; left: 20px; top: 22px; bottom: 22px; width: 1px; background: var(--border); }
+    .tl-item { display: flex; gap: 26px; padding-bottom: 32px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+      background: var(--bg-card); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); position: relative; z-index: 1; transition: border-color 0.3s;
+    }
+    .tl-dot svg { width: 18px; height: 18px; }
+    .tl-item:hover .tl-dot { border-color: var(--border-h); }
+    .tl-body {
+      flex: 1; background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px 28px; transition: border-color 0.3s, transform 0.3s;
+    }
+    .tl-item:hover .tl-body { border-color: rgba(255,255,255,0.09); transform: translateX(3px); }
+    .tl-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 4px; flex-wrap: wrap; }
+    .tl-role { font-family: var(--ff-h); font-size: 16.5px; font-weight: 700; color: var(--text); }
+    .tl-per { font-size: 12px; color: var(--text-2); background: var(--bg-card2); padding: 3px 10px; border-radius: 100px; white-space: nowrap; }
+    .tl-co { font-size: 13px; color: var(--accent); margin-bottom: 13px; }
+    .tl-pts { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .tl-pts li { font-size: 13.5px; color: var(--text-2); padding-left: 17px; position: relative; line-height: 1.6; }
+    .tl-pts li::before { content: '›'; position: absolute; left: 0; color: var(--accent); font-size: 15px; line-height: 1.4; }
+    .tl-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 13px; }
+    .tag { font-size: 11.5px; color: var(--text-3); background: var(--bg-card2); border: 1px solid var(--border); border-radius: 4px; padding: 2px 9px; }
+
+    /* ── PROJECTS ── */
+    .pr-hd { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 36px; }
+    .pr-hd .st { margin-bottom: 0; }
+    .pr-grid { display: grid; grid-template-columns: 1fr; gap: 32px; }
+    .pc {
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+      display: flex; flex-direction: column;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .pc::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0; transition: opacity 0.3s; z-index: 10;
+    }
+    .pc:hover { border-color: rgba(255,255,255,0.09); transform: translateY(-5px); box-shadow: 0 18px 48px rgba(0,0,0,0.4); }
+    .pc:hover::after { opacity: 1; }
+    .pc-img { width: 100%; height: 190px; object-fit: cover; object-position: center; border-bottom: 1px solid var(--border); }
+    .pc-body { padding: 26px; display: flex; flex-direction: column; gap: 13px; height: 100%; }
+    .pc.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.1fr 1fr; align-items: stretch; }
+    .pc.wide:nth-child(even) .pc-img { order: 2; border-right: none; border-left: 1px solid var(--border); }
+    .pc.wide .pc-img { height: 100%; min-height: 380px; border-bottom: none; border-right: 1px solid var(--border); }
+    .pc.wide .pc-body { padding: 40px 48px; justify-content: center; gap: 20px; }
+    .pc-num { font-family: var(--ff-h); font-size: 38px; font-weight: 800; color: var(--text-3); line-height: 1; }
+    .pc-name { font-family: var(--ff-h); font-size: 17px; font-weight: 700; color: var(--text); }
+    .pc-desc { font-size: 13.5px; color: var(--text-2); line-height: 1.7; }
+    .pc-pts { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .pc-pts li { font-size: 13px; color: var(--text-2); padding-left: 13px; position: relative; line-height: 1.55; }
+    .pc-pts li::before { content: '·'; position: absolute; left: 3px; color: var(--accent); }
+    .pc-ft { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 4px; flex-wrap: wrap; gap: 8px; }
+    .trow { display: flex; flex-wrap: wrap; gap: 5px; }
+    .trow span { font-size: 11px; color: var(--text-3); background: var(--bg-card2); border-radius: 4px; padding: 2px 7px; }
+    .plink { display: inline-flex; align-items: center; gap: 4px; color: var(--accent); font-size: 12.5px; font-weight: 600; text-decoration: none; transition: gap 0.2s; }
+    .plink:hover { gap: 7px; }
+
+    /* ── EDUCATION ── */
+    #education { background: linear-gradient(180deg, transparent, rgba(129,140,248,0.013) 50%, transparent); }
+    .edu-g { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .ec {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 9px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .ec:hover { border-color: rgba(255,255,255,0.09); transform: translateY(-3px); }
+    .ec.prim { border-color: rgba(79,195,247,0.14); }
+    .ec-yr { font-size: 11px; color: var(--text-3); font-weight: 500; letter-spacing: 0.06em; }
+    .ec-deg { font-family: var(--ff-h); font-size: 15.5px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .ec-sch { font-size: 13px; color: var(--text-2); }
+    .ec-sc {
+      display: inline-flex; align-items: center; gap: 5px; font-size: 12px;
+      font-weight: 600; color: var(--green); background: var(--green-d);
+      border: 1px solid rgba(52,211,153,0.15); border-radius: 100px;
+      padding: 3px 11px; width: fit-content; margin-top: 3px;
+    }
+
+    /* ── CERTIFICATES ── */
+    .cert-g { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .cert-c { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: all 0.3s; }
+    .cert-c:hover { border-color: rgba(255,255,255,0.09); transform: translateY(-5px); box-shadow: 0 16px 44px rgba(0,0,0,0.4); }
+    .cert-img { width: 100%; height: 145px; object-fit: contain; object-position: center; background: #fff; display: block; }
+    .cert-b { padding: 15px 17px; }
+    .cert-n { font-family: var(--ff-h); font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 5px; line-height: 1.35; }
+    .cert-i { font-size: 12.5px; color: var(--text-2); margin-bottom: 3px; }
+    .cert-d { font-size: 11.5px; color: var(--text-3); }
+
+    /* ── CONTACT ── */
+    #contact { background: linear-gradient(180deg, transparent, rgba(79,195,247,0.013) 50%, transparent); }
+    .ct-box { max-width: 660px; margin: 0 auto; text-align: center; }
+    .ct-box h2 {
+      font-family: var(--ff-h); font-size: clamp(28px, 4vw, 50px);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 16px;
+    }
+    .ct-box h2 span { color: var(--accent); }
+    .ct-box p { color: var(--text-2); font-size: 15.5px; line-height: 1.75; margin-bottom: 34px; }
+    .ct-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px; margin-bottom: 28px; }
+    .cl {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 13px 16px; text-decoration: none; color: var(--text-2);
+      font-size: 13.5px; font-weight: 500; transition: all 0.2s;
+    }
+    .cl:hover { border-color: var(--border-h); color: var(--accent); background: var(--accent-d); transform: translateY(-2px); }
+    .cl svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .ct-res { display: flex; justify-content: center; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 26px 0; position: relative; z-index: 1; }
+    .ft-w {
+      max-width: var(--max); margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .ft-c { font-size: 13px; color: var(--text-3); }
+    .ft-c span { color: var(--accent); }
+    .ft-s { display: flex; gap: 16px; }
+    .ft-s a { color: var(--text-3); text-decoration: none; transition: color 0.2s; }
+    .ft-s a:hover { color: var(--accent); }
+    .ft-s svg { width: 17px; height: 17px; }
+
+    /* ── REVEAL ── */
+    .rv { opacity: 0; transform: translateY(26px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .rv.on { opacity: 1; transform: translateY(0); }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.18s; }
+    .d3 { transition-delay: 0.26s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-g { grid-template-columns: 1fr; gap: 44px; }
+      .pr-grid { grid-template-columns: 1fr 1fr; }
+      .pc.wide { grid-template-columns: 1fr; }
+      .pc.wide .pc-img { height: 240px; min-height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+    }
+    @media (max-width: 768px) {
+      section { padding: 68px 0; }
+      .wrap { padding: 0 20px; }
+      .nav-ul { display: none; }
+      .ham { display: flex; }
+      .nav-w { padding: 0 20px; }
+      .pr-grid { grid-template-columns: 1fr; }
+      .edu-g { grid-template-columns: 1fr; }
+      .cert-g { grid-template-columns: 1fr 1fr; }
+      .ct-grid { grid-template-columns: 1fr; }
+      .ic-grid { grid-template-columns: 1fr 1fr; }
+      .tl::before { left: 16px; }
+      .tl-dot { width: 34px; height: 34px; font-size: 14px; }
+      .tl-body { padding: 18px 20px; }
+      .ft-w { padding: 0 20px; }
+    }
+    @media (max-width: 520px) {
+      .cert-g { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px; margin-left: auto; margin-right: auto; }
+      .hero-btns .btn { justify-content: center; }
+      .ic-grid { grid-template-columns: 1fr; }
+      .tl-item { gap: 12px; }
+      .pc.wide .pc-body { padding: 24px; }
+      .hero-meta { flex-direction: column; gap: 12px; align-items: center; }
     }
   </style>
 </head>
+<body>
 
-<body class="min-h-screen bg-slate-900 text-gray-100">
+<div class="bg-grid"></div>
+<div class="orb orb-a"></div>
+<div class="orb orb-b"></div>
 
-  <!-- Modern Navigation Bar -->
-  <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-lg bg-slate-900/60 border-b border-cyan-500/20 shadow-lg transition-all duration-300" role="navigation">
-    <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold text-cyan-400 cursor-default select-none transition-all duration-300 hover:text-cyan-300">Manvith</div>
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-w">
+    <a href="#hero" class="nav-brand">Manvith<em>.</em></a>
+    <ul class="nav-ul">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+    </ul>
+    <button class="ham" id="ham" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-      <!-- Desktop Links -->
-      <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
-        <a href="#about" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">About</a>
-        <a href="#skills" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Skills</a>
-        <a href="#projects" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Projects</a>
-        <a href="#experience" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Experience</a>
-        <a href="#education" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Education</a>
-        <a href="#certificates" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Certificates</a>
-        <a href="#contact" class="relative text-gray-300 hover:text-cyan-400 transition-all duration-300 ease-in-out hover:scale-105 after:content-[''] after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-[2px] after:bg-cyan-400 after:transition-all after:duration-300 hover:after:w-full">Contact</a>
+<div id="mob">
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#education">Education</a>
+  <a href="#certificates">Certificates</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-in">
+
+      <div class="hero-badge">
+        <span class="bdot"></span>
+        Available for opportunities
       </div>
 
-      <!-- Mobile Hamburger Button -->
-      <button id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden flex items-center justify-center p-2 rounded-full text-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10 focus:outline-none focus:ring-2 focus:ring-cyan-400 transition-all duration-300">
-        <svg id="nav-toggle-open" class="block h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg id="nav-toggle-close" class="hidden h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
+      <h1 class="hero-name">
+        Manvith <span class="gr">Poojary</span>
+      </h1>
+
+      <p class="hero-role">Full Stack Developer</p>
+
+      <p class="hero-desc">
+        Building fast, scalable, and clean web applications with React, Node.js, Laravel, and Next.js.
+        Focused on great user experiences and solid backend architecture.
+      </p>
+
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-s">
+          View My Work
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="Assets/Manvith-Resume.pdf" target="_blank" class="btn btn-g">
+          Download Resume
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-meta">
+        <a href="mailto:manvithpoojary63@gmail.com" class="hm-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          manvithpoojary63@gmail.com
+        </a>
+        <a href="tel:+917676644327" class="hm-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 2h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.05 12.05 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 76766 44327
+        </a>
+        <a href="https://github.com/Manvith-003" target="_blank" class="hm-item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.478 2 2 6.478 2 12c0 4.418 2.867 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.239-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.455-1.159-1.11-1.468-1.11-1.468-.909-.621.07-.609.07-.609 1.004.07 1.533 1.032 1.533 1.032.892 1.53 2.341 1.089 2.911.833.092-.647.35-1.09.636-1.342-2.221-.254-4.555-1.111-4.555-4.944 0-1.091.39-1.983 1.029-2.681-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.563 9.563 0 0112 6.844c.77.004 1.546.105 2.269.307 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.698 1.028 1.59 1.028 2.681 0 3.844-2.337 4.688-4.566 4.938.359.309.679.919.679 1.852 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C19.135 20.163 22 16.418 22 12c0-5.522-4.478-10-10-10z"/></svg>
+          github.com/Manvith-003
+        </a>
+        <a href="https://linkedin.com/in/manvithpoojary" target="_blank" class="hm-item">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.762 0-5 2.238-5 5v14c0 2.762 2.238 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.762-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.273c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.783 1.75-1.75 1.75zm13.5 11.273h-3v-5.454c0-1.299-.025-2.974-1.814-2.974-1.814 0-2.093 1.418-2.093 2.887v5.541h-3v-10h2.881v1.367h.041c.401-.757 1.382-1.556 2.843-1.556 3.039 0 3.601 2.002 3.601 4.604v5.585z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
     </div>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 bg-slate-900/80 backdrop-blur-lg border-t border-cyan-500/20">
-      <div class="flex flex-col px-4 py-4 space-y-3 text-center">
-        <a href="#about" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">About</a>
-        <a href="#skills" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Skills</a>
-        <a href="#projects" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Projects</a>
-        <a href="#experience" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Experience</a>
-        <a href="#education" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Education</a>
-        <a href="#certificates" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Certificates</a>
-        <a href="#contact" class="text-gray-300 hover:text-cyan-400 transition-all duration-300 hover:scale-105 py-2 border-b border-slate-700/50 last:border-0">Contact</a>
+  </div>
+  <div class="scroll-h">
+    <span>Scroll</span>
+    <div class="scroll-l"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-g">
+      <div class="rv">
+        <span class="eye">Who I Am</span>
+        <h2 class="st">A developer who cares about every detail</h2>
+        <p>I'm a Full Stack Developer with hands-on experience building production-grade web applications. Currently working at Onplanet Technologies, Mangalore, I've contributed to LMS platforms, ERP modules, and real-time applications.</p>
+        <p>My stack spans React, Next.js, Node.js, Laravel, and React Native — backed by strong database skills in MySQL and MongoDB, and DevOps know-how with Docker and GitHub Actions.</p>
+        <p>I recently completed my MCA from St. Joseph Engineering College with a CGPA of 7.85, and I'm passionate about building solutions that are both technically solid and great to use.</p>
+        <div class="about-links">
+          <a href="mailto:manvithpoojary63@gmail.com" class="al">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            manvithpoojary63@gmail.com
+          </a>
+          <a href="https://linkedin.com/in/manvithpoojary" target="_blank" class="al">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.762 0-5 2.238-5 5v14c0 2.762 2.238 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.762-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.273c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.783 1.75-1.75 1.75zm13.5 11.273h-3v-5.454c0-1.299-.025-2.974-1.814-2.974-1.814 0-2.093 1.418-2.093 2.887v5.541h-3v-10h2.881v1.367h.041c.401-.757 1.382-1.556 2.843-1.556 3.039 0 3.601 2.002 3.601 4.604v5.585z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/Manvith-003" target="_blank" class="al">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.478 2 2 6.478 2 12c0 4.418 2.867 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.239-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.455-1.159-1.11-1.468-1.11-1.468-.909-.621.07-.609.07-.609 1.004.07 1.533 1.032 1.533 1.032.892 1.53 2.341 1.089 2.911.833.092-.647.35-1.09.636-1.342-2.221-.254-4.555-1.111-4.555-4.944 0-1.091.39-1.983 1.029-2.681-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.563 9.563 0 0112 6.844c.77.004 1.546.105 2.269.307 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.698 1.028 1.59 1.028 2.681 0 3.844-2.337 4.688-4.566 4.938.359.309.679.919.679 1.852 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C19.135 20.163 22 16.418 22 12c0-5.522-4.478-10-10-10z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <div class="ic-grid rv d2">
+        <div class="ic"><div class="ic-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg></div><div class="ic-l">Currently At</div><div class="ic-v">Onplanet Technologies</div></div>
+        <div class="ic"><div class="ic-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div class="ic-l">Location</div><div class="ic-v">Mangalore, Karnataka</div></div>
+        <div class="ic"><div class="ic-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div class="ic-l">Education</div><div class="ic-v">MCA — 7.85 CGPA</div></div>
+        <div class="ic"><div class="ic-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="ic-l">Role</div><div class="ic-v">Full Stack Dev</div></div>
+        <div class="ic s2"><div class="ic-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M2 7h20"/></svg></div><div class="ic-l">Experience</div><div class="ic-v">6+ months · Full Stack Developer</div></div>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <main>
-    <!-- Hero Section -->
-    <section class="container mx-auto px-4 py-8 sm:py-12 md:py-16 lg:py-24">
-      <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
-        <div class="md:w-1/2 space-y-4 sm:space-y-6">
-          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-100">
-            Hi, I'm <span class="text-cyan-400">Manvith</span>
-          </h1>
-          <p class="text-base sm:text-lg text-gray-400 leading-relaxed">
-            MCA student passionate about full-stack software development, with practical experience in modern technologies for building impactful applications.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#contact" class="inline-flex items-center px-6 py-2 sm:px-8 sm:py-3 bg-cyan-400 text-slate-900 font-medium rounded-lg hover:bg-cyan-300 transition-colors duration-200 shadow-lg hover:shadow-cyan-400/25 text-sm sm:text-base">
-              Contact Me
-            </a>
-            <a href="Assets/Manvith-Resume.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2 sm:px-8 sm:py-3 bg-cyan-400 text-slate-900 font-medium rounded-lg hover:bg-cyan-300 transition-colors duration-200 shadow-lg hover:shadow-cyan-400/25 text-sm sm:text-base">
-              Resume
-            </a>
-          </div>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <span class="eye rv">Tech Stack</span>
+    <h2 class="st rv">Technical Skills</h2>
+    <div class="sg-wrap">
+      <div class="rv">
+        <p class="sg-lbl">Languages</p>
+        <div class="pills">
+          <span class="pill p-a"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+          <span class="pill p-a"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+          <span class="pill"><i class="devicon-php-plain colored"></i> PHP</span>
+          <span class="pill"><i class="devicon-html5-plain colored"></i> HTML5</span>
+          <span class="pill"><i class="devicon-css3-plain colored"></i> CSS3</span>
+          <span class="pill"><i class="devicon-java-plain colored"></i> Java</span>
+          <span class="pill"><i class="devicon-python-plain colored"></i> Python</span>
+          <span class="pill"><i class="devicon-c-plain colored"></i> C</span>
         </div>
-        <div class="md:w-1/2 flex justify-center mt-4 sm:mt-6 md:mt-0">
-          <div class="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 bg-gradient-to-br from-cyan-400/20 to-blue-500/20 rounded-full border-2 border-cyan-400/30 flex items-center justify-center shadow-md hover:shadow-cyan-400/30 transition-shadow duration-300">
-            <img 
-              src="Assets/Manvith-profile.jpg"
-              alt="Manvith's Profile Picture"
-              class="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-52 lg:h-52 rounded-full object-cover border border-cyan-400/20"
-            />
+      </div>
+      <div class="sg-div"></div>
+      <div class="rv">
+        <p class="sg-lbl">Frontend</p>
+        <div class="pills">
+          <span class="pill p-a"><i class="devicon-react-original colored"></i> React.js</span>
+          <span class="pill p-a"><i class="devicon-nextjs-plain" style="color: #fff"></i> Next.js</span>
+          <span class="pill p-a"><i class="devicon-react-original colored"></i> React Native</span>
+          <span class="pill"><i class="devicon-tailwindcss-original colored"></i> Tailwind CSS</span>
+          <span class="pill"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</span>
+        </div>
+      </div>
+      <div class="sg-div"></div>
+      <div class="rv">
+        <p class="sg-lbl">Backend</p>
+        <div class="pills">
+          <span class="pill p-p"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+          <span class="pill p-p"><i class="devicon-express-original" style="color: #fff"></i> Express.js</span>
+          <span class="pill p-p"><i class="devicon-laravel-original colored"></i> Laravel</span>
+          <span class="pill p-p"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> RESTful APIs</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg> MVC Architecture</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg> Microservices</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg> CI/CD</span>
+        </div>
+      </div>
+      <div class="sg-div"></div>
+      <div class="rv">
+        <p class="sg-lbl">Databases</p>
+        <div class="pills">
+          <span class="pill p-g"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+          <span class="pill p-g"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+          <span class="pill p-g"><i class="devicon-redis-plain colored"></i> Redis</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> SQL</span>
+        </div>
+      </div>
+      <div class="sg-div"></div>
+      <div class="rv">
+        <p class="sg-lbl">DevOps &amp; Tools</p>
+        <div class="pills">
+          <span class="pill"><i class="devicon-git-plain colored"></i> Git</span>
+          <span class="pill"><i class="devicon-github-original" style="color: #fff"></i> GitHub</span>
+          <span class="pill"><i class="devicon-docker-plain colored"></i> Docker</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg> Actions</span>
+          <span class="pill"><i class="devicon-postman-plain colored"></i> Postman</span>
+          <span class="pill"><i class="devicon-npm-original-wordmark colored"></i> npm / pnpm</span>
+          <span class="pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> Hostinger</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <span class="eye rv">Career</span>
+    <h2 class="st rv">Work Experience</h2>
+    <div class="tl">
+      <div class="tl-item rv">
+        <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="tl-body">
+          <div class="tl-top">
+            <span class="tl-role">Full Stack Developer</span>
+            <span class="tl-per">Nov 2025 – Apr 2026</span>
+          </div>
+          <p class="tl-co">Onplanet Technologies · Mangalore</p>
+          <ul class="tl-pts">
+            <li>Built and maintained full-stack web applications using Laravel (PHP) and MySQL for LMS platforms — Paathshala and NxtStudy.</li>
+            <li>Implemented user authentication systems and comprehensive content management modules.</li>
+            <li>Developed responsive frontend UI using Bootstrap and JavaScript.</li>
+            <li>Deployed and maintained production applications on Hostinger.</li>
+            <li>Collaborated in an Agile team environment, consistently meeting project deadlines.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tag">Laravel</span><span class="tag">PHP</span><span class="tag">MySQL</span>
+            <span class="tag">Bootstrap</span><span class="tag">JavaScript</span><span class="tag">Hostinger</span>
           </div>
         </div>
       </div>
-    </section>
-    <!-- About Section -->
-    <section id="about" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-100 text-center md:text-left">About Me</h2>
-        <p class="text-base sm:text-lg text-gray-400 leading-relaxed">
-          I am an MCA student (2023–2025) at St. Joseph Engineering College, passionate about software development. Skilled in building academic and real-world projects that showcase teamwork, problem-solving, and adaptability. Always eager to learn new technologies and contribute to creating meaningful, impactful solutions.
-        </p>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-100 text-center">Technical Skills</h2>
-
-      <div class="max-w-6xl mx-auto space-y-8 sm:space-y-10 md:space-y-12">
-
-        <!-- Languages -->
-        <div>
-          <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 md:mb-6 text-cyan-400 border-b border-cyan-400 pb-2 max-w-max mx-auto md:mx-0">Languages</h3>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-7 gap-4 sm:gap-6 md:gap-8">
-            <!-- HTML -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/html.png" alt="HTML Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">HTML</p>
-            </div>
-            <!-- CSS -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/css.png" alt="CSS Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">CSS</p>
-            </div>
-
-            <!-- JavaScript -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/javascript.png" alt="JavaScript Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">JavaScript</p>
-            </div>
-            <!-- PHP -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/php.png" alt="PHP Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">PHP</p>
-            </div>
-
-            <!-- Python -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/python.png" alt="Python Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">Python</p>
-            </div>
-
-            <!-- Java -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/java.png" alt="Java Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">Java</p>
-            </div>
-            <!-- C -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-cyan-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/c.svg" alt="C Programming Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-cyan-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-cyan-300">C</p>
-            </div>
+      <div class="tl-item rv d1">
+        <div class="tl-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="tl-body">
+          <div class="tl-top">
+            <span class="tl-role">Software Development Intern</span>
+            <span class="tl-per">May 2025 – Jul 2025</span>
           </div>
-        </div>
-
-        <!-- Databases -->
-        <div>
-          <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 md:mb-6 text-emerald-400 border-b border-emerald-400 pb-2 max-w-max mx-auto md:mx-0">Databases</h3>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
-            <!-- SQL -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-emerald-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/sql.png" alt="SQL Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-emerald-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-emerald-300">SQL</p>
-            </div>
-
-            <!-- MySQL -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-emerald-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/mysql.png" alt="MySQL Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-emerald-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-emerald-300">MySQL</p>
-            </div>
-
-            <!-- MongoDB -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-emerald-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/mongodb.png" alt="MongoDB Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-emerald-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-emerald-300">MongoDB</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tools & Frameworks -->
-        <div>
-          <h3 class="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 md:mb-6 text-orange-400 border-b border-orange-400 pb-2 max-w-max mx-auto md:mx-0">Tools & Frameworks</h3>
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6 md:gap-8">
-            <!-- Git -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/git.png" alt="Git Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Git</p>
-            </div>
-            <!-- GitHub -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/github.png" alt="GitHub Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">GitHub</p>
-            </div>
-
-            <!-- Docker -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/docker.png" alt="Docker Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Docker</p>
-            </div>
-            <!-- Tailwind -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/tailwindcss.svg" alt="Tailwind CSS Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Tailwind</p>
-            </div>
-
-            <!-- Bootstrap -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/bootstrap.png" alt="Bootstrap Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Bootstrap</p>
-            </div>
-
-            <!-- React -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/react.png" alt="React Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">React</p>
-            </div>
-
-            <!-- React Native -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/react-native.svg" alt="React Native Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">React Native</p>
-            </div>
-
-            <!-- Express.js -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/express.png" alt="Express.js Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Express.js</p>
-            </div>
-
-            <!-- postman -->
-            <div class="group bg-slate-800/70 border border-slate-700 rounded-xl p-3 sm:p-4 md:p-6 flex flex-col items-center shadow-md hover:shadow-orange-500/50 transition-shadow duration-300 cursor-pointer">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 mb-2 sm:mb-3 md:mb-4">
-                <img src="Assets/postman.png" alt="postman Logo"
-                  class="w-full h-full object-contain filter group-hover:brightness-110 transition-all duration-300" />
-              </div>
-              <p class="text-orange-400 font-semibold text-sm sm:text-base md:text-lg group-hover:text-orange-300">Postman</p>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-      <!-- Soft Skills -->
-      <div class="border-t border-slate-700 pt-4 sm:pt-6 mt-6 sm:mt-8">
-        <h3 class="text-xl sm:text-2xl md:text-3xl text-gray-100 mb-3 sm:mb-4 text-center md:text-left">Soft Skills</h3>
-        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
-          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Problem Solving</span>
-          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Team Collaboration</span>
-          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Time Management</span>
-          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Adaptability</span>
-          <span class="bg-purple-400/10 border-purple-400/30 text-purple-300 px-2 py-1 sm:px-3 sm:py-1 rounded-full text-xs sm:text-sm border font-medium hover:scale-105 transition-transform duration-200">Self-Motivation</span>
-        </div>
-      </div>
-    </section>
-    <!-- Projects Section -->
-    <section id="projects" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-12 text-gray-100 text-center">Projects</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
-        <!-- Project 1 -->
-        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/10 group">
-          <div class="aspect-video overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1742069207641-4e523bf7060c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xsZWdlJTIwdHJhbnNwb3J0JTIwc3lzdGVtJTIwd2ViJTIwZGV2ZWxvcG1lbnR8ZW58MXx8fHwxNzU1ODc4OTA3fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="College Transport System"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div class="p-4 sm:p-6">
-            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-100">College Transport System</h3>
-            <p class="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4 leading-relaxed">A web-based system for managing college transport, bookings, schedules, and route tracking.</p>
-            <div class="flex flex-wrap gap-2 mb-3 sm:mb-6">
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">PHP</span>
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">MySQL</span>
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">JavaScript</span>
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">HTML</span>
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">CSS</span>
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">Bootstrap</span>
-            </div>
-            <a 
-              href="https://github.com/Manvith-003/collegetransport"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-200 font-medium text-sm sm:text-base"
-            >
-              View on GitHub →
-            </a>
-          </div>
-        </div>
-        <!-- Project 2 -->
-        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/10 group">
-          <div class="aspect-video overflow-hidden">
-            <img
-              src="https://images.unsplash.com/photo-1659353587228-5dbbebb5d98f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjBwbGF0Zm9ybSUyMG1vYmlsZSUyMGFwcHxlbnwxfHx8fDE3NTU4Nzg5MTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-              alt="Build-Connect"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div class="p-4 sm:p-6">
-            <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-gray-100">Build-Connect</h3>
-            <p class="text-sm sm:text-base text-gray-400 mb-3 sm:mb-4 leading-relaxed">A digital platform connecting buyers, sellers, contractors & site scouts for end-to-end land and construction solutions, including real-time chat.</p>
-            <div class="flex flex-wrap gap-2 mb-3 sm:mb-6">
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">React Native</span>
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">Node.js Microservices</span>
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">MongoDB</span>
-              <span class="bg-cyan-400/10 text-cyan-300 px-2 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/20">Redis</span>
-            </div>
-            <a 
-              href="https://github.com/Manvith-003"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors duration-200 font-medium text-sm sm:text-base"
-            >
-              View on GitHub →
-            </a>
+          <p class="tl-co">Ukshati Technologies Pvt. Ltd. · Mangalore</p>
+          <ul class="tl-pts">
+            <li>Designed and developed RESTful APIs using Node.js and Express.js for an ERP Purchase Order module.</li>
+            <li>Built responsive user interfaces using Next.js and Tailwind CSS.</li>
+            <li>Optimized MySQL queries to significantly improve application performance.</li>
+            <li>Deployed applications using Docker and implemented CI/CD pipelines with GitHub Actions.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">Next.js</span>
+            <span class="tag">Tailwind CSS</span><span class="tag">MySQL</span><span class="tag">Docker</span><span class="tag">GitHub Actions</span>
           </div>
         </div>
       </div>
-    </section>
-    <!-- Experience Section -->
-    <section id="experience" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-      <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 md:p-8 border border-slate-700">
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-8 text-gray-100 text-center md:text-left">Internship Experience</h2>
-        <div class="space-y-4 sm:space-y-6">
-          <div class="border-l-4 border-cyan-400 pl-3 sm:pl-4 md:pl-6">
-            <h3 class="text-lg sm:text-xl font-semibold text-gray-100 mb-1 sm:mb-2">Software Development Intern</h3>
-            <div class="text-cyan-400 font-medium mb-1 sm:mb-3 text-sm sm:text-base">
-              Ukshati Technologies Pvt. Ltd., Mangalore
-            </div>
-            <div class="text-gray-400 mb-2 sm:mb-4 text-sm sm:text-base">May 2025 - Jul 2025</div>
-            <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
-              <li class="flex items-start">
-                <span class="text-cyan-400 mr-2">•</span>
-                Developed REST APIs (Node.js/Express.js) for ERP Purchase Order Module.
-              </li>
-              <li class="flex items-start">
-                <span class="text-cyan-400 mr-2">•</span>
-                Built responsive UIs using Next.js and Tailwind CSS.
-              </li>
-              <li class="flex items-start">
-                <span class="text-cyan-400 mr-2">•</span>
-                Optimized MySQL queries, deployed with Docker, and implemented CI/CD (GitHub Actions).
-              </li>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="pr-hd">
+      <div>
+        <span class="eye rv">Built By Me</span>
+        <h2 class="st rv">Projects</h2>
+      </div>
+      <a href="https://github.com/Manvith-003" target="_blank" class="btn btn-g rv" style="font-size:13px;padding:10px 16px;">
+        All on GitHub
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+      </a>
+    </div>
+    <div class="pr-grid">
+      <div class="pc wide rv">
+        <img src="https://images.unsplash.com/photo-1541888081197-2a62885ddba7?auto=format&fit=crop&q=80&w=800" alt="Build-Connect" class="pc-img">
+        <div class="pc-body">
+          <div>
+            <div class="pc-num">01</div>
+            <h3 class="pc-name" style="margin-top:8px;font-size:21px;">Build-Connect</h3>
+            <p class="pc-desc" style="margin-top:10px;">A full-stack platform connecting buyers, sellers, contractors, and site scouts for service discovery and hiring in the construction industry.</p>
+            <a href="https://github.com/Manvith-003/Build-Connect" target="_blank" class="plink" style="margin-top:16px;display:inline-flex;">View on GitHub →</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <ul class="pc-pts">
+              <li>Real-time chat using WebSockets for instant communication</li>
+              <li>Location-based matching algorithm for contractor discovery</li>
+              <li>Service booking and management with end-to-end workflow</li>
+              <li>Microservices backend with Node.js, MongoDB, and Redis caching</li>
             </ul>
+            <div class="trow"><span>React Native</span><span>Node.js</span><span>MongoDB</span><span>Redis</span><span>WebSockets</span></div>
           </div>
-          <div class="border-l-4 border-cyan-400 pl-3 sm:pl-4 md:pl-6">
-            <h3 class="text-lg sm:text-xl font-semibold text-gray-100 mb-1 sm:mb-2">Software Development Intern</h3>
-            <div class="text-cyan-400 font-medium mb-1 sm:mb-3 text-sm sm:text-base">St Joseph Engineering College, Department of Computer Applications, Mangaluru</div>
-            <div class="text-gray-400 mb-2 sm:mb-4 text-sm sm:text-base">October 2024 - November 2024</div>
-            <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
-              <li class="flex items-start">
-                <span class="text-cyan-400 mr-2">•</span>
-                Completed internship on College Transport Management System.
-              </li>
-              <li class="flex items-start">
-                <span class="text-cyan-400 mr-2">•</span>
-                Applied programming and software development skills during MCA.
-              </li>
-              <li class="flex items-start">
-                <span class="text-cyan-400 mr-2">•</span>
-                Contributed to project development.
-              </li>
+        </div>
+      </div>
+      <div class="pc wide rv d1">
+        <img src="https://images.unsplash.com/photo-1494515843206-f3117d3f51b7?auto=format&fit=crop&q=80&w=800" alt="College Transport System" class="pc-img">
+        <div class="pc-body">
+          <div>
+            <div class="pc-num">02</div>
+            <h3 class="pc-name" style="margin-top:8px;font-size:21px;">College Transport System</h3>
+            <p class="pc-desc" style="margin-top:10px;">Web-based transport management system for vehicle booking and route tracking with admin and student portals.</p>
+            <a href="https://github.com/Manvith-003/College-Transport-System" target="_blank" class="plink" style="margin-top:16px;display:inline-flex;">View on GitHub →</a>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <ul class="pc-pts">
+              <li>Role-based access for admin & students</li>
+              <li>Vehicle scheduling and booking features</li>
+              <li>Responsive UI with PHP, MySQL & Bootstrap</li>
+              <li>Automated route optimization and notification system</li>
             </ul>
+            <div class="trow"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Bootstrap</span></div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- Education Section -->
-    <section id="education" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-12 text-gray-100 text-center">Education</h2>
-      <div class="space-y-4 sm:space-y-6">
-        <div class="bg-slate-800/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-200">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
-            <div class="flex-1">
-              <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1">Master of Computer Application</h3>
-              <p class="text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">St. Joseph Engineering College</p>
-              <p class="text-cyan-400 font-medium text-sm sm:text-base">7.71 CGPA</p>
-            </div>
-            <div class="text-gray-400 sm:text-right text-sm sm:text-base">2023 - 2025</div>
+      <div class="pc wide rv d2">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="ERP Purchase Order Module" class="pc-img">
+        <div class="pc-body">
+          <div>
+            <div class="pc-num">03</div>
+            <h3 class="pc-name" style="margin-top:8px;font-size:21px;">ERP Purchase Order Module</h3>
+            <p class="pc-desc" style="margin-top:10px;">RESTful API module for an Enterprise Resource Planning system handling complex purchase order workflows.</p>
           </div>
-        </div>
-
-        <div class="bg-slate-800/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-200">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
-            <div class="flex-1">
-              <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1">Bachelor of Computer Application</h3>
-              <p class="text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">Sri Ramakrishna College</p>
-              <p class="text-cyan-400 font-medium text-sm sm:text-base">75.37%</p>
-            </div>
-            <div class="text-gray-400 sm:text-right text-sm sm:text-base">2020 - 2023</div>
-          </div>
-        </div>
-
-        <div class="bg-slate-800/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-200">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
-            <div class="flex-1">
-              <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1">PUC</h3>
-              <p class="text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">St. Sebastian College</p>
-              <p class="text-cyan-400 font-medium text-sm sm:text-base">74.66%</p>
-            </div>
-            <div class="text-gray-400 sm:text-right text-sm sm:text-base">2019 - 2020</div>
-          </div>
-        </div>
-
-        <div class="bg-slate-800/30 rounded-xl p-4 sm:p-6 border border-slate-700 hover:border-slate-600 transition-colors duration-200">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
-            <div class="flex-1">
-              <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1">SSLC</h3>
-              <p class="text-gray-400 mb-1 sm:mb-2 text-sm sm:text-base">St. Sebastian High School</p>
-              <p class="text-cyan-400 font-medium text-sm sm:text-base">82.4%</p>
-            </div>
-            <div class="text-gray-400 sm:text-right text-sm sm:text-base">2016 - 2018</div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <ul class="pc-pts">
+              <li>Complex PO workflow automation</li>
+              <li>Optimized MySQL query performance</li>
+              <li>Containerized with Docker & CI/CD via GitHub Actions</li>
+              <li>High-availability backend with comprehensive logging</li>
+            </ul>
+            <div class="trow"><span>Node.js</span><span>Express.js</span><span>MySQL</span><span>Docker</span></div>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Certificates -->
-    <section id="certificates" class="container mx-auto px-4 py-8 sm:py-12 md:py-16">
-      <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 md:mb-12 text-gray-100 text-center">Certificates</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-        <!-- Certificate 1: Javascript -->
-       <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
-           <img src="Assets/Cirtificate/javascript.jpg" alt="JavaScript Certificate" class="w-full h-56 object-contain object-center bg-white" />
-          <div class="p-3 sm:p-4 md:p-6">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">Programming with JavaScript</h3>
-            <p class="text-gray-400 mb-1 text-sm sm:text-base">Meta (Coursera)</p>
-            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">July 2024</p>
-          </div>
-        </div>
-
-<!-- Certificate 2: HTML, CSS, JavaScript -->
-        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
-          <img src="Assets/Cirtificate/html,css, javascript.jpg" alt="web-based Certificate" class="w-full h-56 object-contain object-center bg-white" />
-          <div class="p-3 sm:p-4 md:p-6">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">Intro to Web Development with HTML, CSS, JavaScript</h3>
-            <p class="text-gray-400 mb-1 text-sm sm:text-base">IBM (Coursera)</p>
-            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">June 2024</p>
-          </div>
-        </div>
-
-        <!-- Certificate 3: Committee Head at Joshiana -->
-        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
-           <img src="Assets/Cirtificate/joshiana.jpg" alt="Joshiana Certificate" class="w-full h-56 object-contain object-center bg-white" />
-          <div class="p-3 sm:p-4 md:p-6">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">Committee Head, Stage & Decoration (Joshiana 13.0)</h3>
-            <p class="text-gray-400 mb-1 text-sm sm:text-base">St Joseph Engineering College</p>
-            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">2024</p>
-          </div>
-        </div>
-        <!-- Certificate 4: Aws -->
- <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
-          <img src="Assets/Cirtificate/AWS.jpg" alt="AWS Certificate" class="w-full h-56 object-contain object-center bg-white" />
-          <div class="p-3 sm:p-4 md:p-6">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">AWS Unleashed: Hands-On Cloud Training</h3>
-            <p class="text-gray-400 mb-1 text-sm sm:text-base">St Joseph Engineering College</p>
-            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">8-10 July 2024</p>
-          </div>
-        </div>
-
-        <!-- Certificate 5: Flipkart Grid 6.0 Quiz -->
-        <div class="bg-slate-800/50 rounded-2xl overflow-hidden border border-slate-700 hover:border-cyan-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-400/20 group">
-           <img src="Assets/Cirtificate/Flipkart.jpg" alt="Flipkart Certificate" class="w-full h-56 object-contain object-center bg-white" />
-          <div class="p-3 sm:p-4 md:p-6">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-1 sm:mb-2">Flipkart GRID 6.0 Software Development Track</h3>
-            <p class="text-gray-400 mb-1 text-sm sm:text-base">Flipkart</p>
-            <p class="text-cyan-400 font-medium mb-1 text-sm sm:text-base">July 2024</p>
-          </div>
-        </div>
       </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact" class="bg-gradient-to-b from-slate-900 to-slate-800 flex flex-col items-center justify-center px-4 py-8 sm:py-12 md:py-16 relative flex-grow">
-      <div class="absolute inset-0 bg-gradient-radial from-cyan-400/5 via-transparent to-transparent"></div>
-      <div class="relative z-10 flex flex-col items-center max-w-4xl text-center">
-        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 md:mb-8 text-cyan-400">
-          Connect with me!
-        </h2>
-        <p class="text-base sm:text-lg text-gray-300 mb-6 sm:mb-8 md:mb-12 leading-relaxed">
-          Hi there! I'm passionate about creating meaningful connections. Feel free to reach out to me for collaborations, project inquiries, or just to say hello.
-        </p>
-        
-        <!-- Navigation Links -->
-        <nav class="flex justify-center flex-wrap gap-4 sm:gap-6 mb-6 sm:mb-8 md:mb-12 text-gray-400 text-sm sm:text-base" aria-label="Footer navigation">
-          <a href="#about" class="hover:text-cyan-400 transition-colors duration-200">About</a>
-          <a href="#skills" class="hover:text-cyan-400 transition-colors duration-200">Skills</a>
-          <a href="#projects" class="hover:text-cyan-400 transition-colors duration-200">Projects</a>
-          <a href="#experience" class="hover:text-cyan-400 transition-colors duration-200">Experience</a>
-          <a href="#education" class="hover:text-cyan-400 transition-colors duration-200">Education</a>
-          <a href="#certificates" class="hover:text-cyan-400 transition-colors duration-200">Certificates</a>
-          <a href="#contact" class="hover:text-cyan-400 transition-colors duration-200">Contact</a>
-        </nav>
-        <!-- Social Links -->
-        <div class="flex justify-center space-x-6 sm:space-x-8 text-cyan-400">
-          <!-- <a 
-            href="https://twitter.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Twitter"
-            class="hover:text-cyan-300 hover:scale-110 transition-all duration-200"
-          >
-            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true">
-              <path d="M19.633 7.997c.013.18.013.36.013.54 0 5.5-4.19 11.85-11.85 11.85-2.36 0-4.56-.69-6.41-1.89a8.43 8.43 0 0 0 6.21-1.74 4.237 4.237 0 0 1-3.95-2.93c.26.038.51.064.78.064.37 0 .74-.051 1.08-.14A4.22 4.22 0 0 1 2.8 12.09v-.05c.7.39 1.5.62 2.35.65a4.231 4.231 0 0 1-1.88-3.52c0-.78.21-1.51.57-2.14a11.977 11.977 0 0 0 8.69 4.41 4.778 4.778 0 0 1-.1-.97 4.22 4.22 0 0 1 7.3-3.84 8.43 8.43 0 0 0 2.69-1.03 4.22 4.22 0 0 1-1.85 2.33 8.478 8.478 0 0 0 2.44-.66 9.07 9.07 0 0 1-2.11 2.19z"/>
-            </svg>
-          </a> -->
-          <a 
-            href="https://github.com/Manvith-003"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            class="hover:text-cyan-300 hover:scale-110 transition-all duration-200"
-          >
-            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true">
-              <path d="M12 2C6.478 2 2 6.478 2 12c0 4.418 2.867 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.239-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.455-1.159-1.11-1.468-1.11-1.468-.909-.621.07-.609.07-.609 1.004.07 1.533 1.032 1.533 1.032.892 1.53 2.341 1.089 2.911.833.092-.647.35-1.09.636-1.342-2.221-.254-4.555-1.111-4.555-4.944 0-1.091.39-1.983 1.029-2.681-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025a9.563 9.563 0 0 1 2.5-.336 9.5 9.5 0 0 1 2.499.336c1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.698 1.028 1.59 1.028 2.681 0 3.844-2.337 4.688-4.566 4.938.359.309.679.919.679 1.852 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C19.135 20.163 22 16.418 22 12c0-5.522-4.478-10-10-10z"/>
-            </svg>
-          </a>
-          <a 
-            href="mailto:manvithpoojary63@gmail.com"
-            rel="noopener noreferrer"
-            aria-label="Email"
-            class="hover:text-cyan-300 hover:scale-110 transition-all duration-200"
-          >
-            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true">
-              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/>
-            </svg>
-          </a>
-          <a 
-            href="https://www.linkedin.com/in/manvithpoojary"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="LinkedIn"
-            class="hover:text-cyan-300 hover:scale-110 transition-all duration-200"
-          >
-            <svg fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true">
-              <path d="M19 0h-14c-2.762 0-5 2.238-5 5v14c0 2.762 2.238 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.762-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.273c-.966 0-1.75-.783-1.75-1.75 0-.966.784-1.75 1.75-1.75.967 0 1.75.784 1.75 1.75 0 .967-.783 1.75-1.75 1.75zm13.5 11.273h-3v-5.454c0-1.299-.025-2.974-1.814-2.974-1.814 0-2.093 1.418-2.093 2.887v5.541h-3v-10h2.881v1.367h.041c.401-.757 1.382-1.556 2.843-1.556 3.039 0 3.601 2.002 3.601 4.604v5.585z"/>
-            </svg>
-          </a>
-        </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <span class="eye rv">Academic Background</span>
+    <h2 class="st rv">Education</h2>
+    <div class="edu-g">
+      <div class="ec prim rv">
+        <div class="ec-yr">2023 — 2025</div>
+        <div class="ec-deg">Master of Computer Applications (MCA)</div>
+        <div class="ec-sch">St. Joseph Engineering College, Mangalore</div>
+        <div class="ec-sc">✦ CGPA 7.85</div>
       </div>
-    </section>
-  </main>
+      <div class="ec rv d1">
+        <div class="ec-yr">2020 — 2023</div>
+        <div class="ec-deg">Bachelor of Computer Applications (BCA)</div>
+        <div class="ec-sch">Sri Ramakrishna College, Mangalore</div>
+        <div class="ec-sc">✦ 75.37%</div>
+      </div>
+      <div class="ec rv d2">
+        <div class="ec-yr">2019 — 2020</div>
+        <div class="ec-deg">Pre-University Course (PUC)</div>
+        <div class="ec-sch">St. Sebastian College</div>
+        <div class="ec-sc">✦ 74.66%</div>
+      </div>
+      <div class="ec rv d3">
+        <div class="ec-yr">2016 — 2018</div>
+        <div class="ec-deg">SSLC</div>
+        <div class="ec-sch">St. Sebastian High School</div>
+        <div class="ec-sc">✦ 82.4%</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
+<!-- CERTIFICATES -->
+<section id="certificates">
+  <div class="wrap">
+    <span class="eye rv">Credentials</span>
+    <h2 class="st rv">Certificates</h2>
+    <div class="cert-g">
+      <div class="cert-c rv">
+        <img src="Assets/Cirtificate/javascript.jpg" alt="JavaScript Certificate" class="cert-img"/>
+        <div class="cert-b"><div class="cert-n">Programming with JavaScript</div><div class="cert-i">Meta · Coursera</div><div class="cert-d">July 2024</div></div>
+      </div>
+      <div class="cert-c rv d1">
+        <img src="Assets/Cirtificate/html,css, javascript.jpg" alt="Web Dev Certificate" class="cert-img"/>
+        <div class="cert-b"><div class="cert-n">Intro to Web Development with HTML, CSS, JavaScript</div><div class="cert-i">IBM · Coursera</div><div class="cert-d">June 2024</div></div>
+      </div>
+      <div class="cert-c rv d2">
+        <img src="Assets/Cirtificate/AWS.jpg" alt="AWS Certificate" class="cert-img"/>
+        <div class="cert-b"><div class="cert-n">AWS Unleashed: Hands-On Cloud Training</div><div class="cert-i">St. Joseph Engineering College</div><div class="cert-d">July 2024</div></div>
+      </div>
+      <div class="cert-c rv">
+        <img src="Assets/Cirtificate/Flipkart.jpg" alt="Flipkart Certificate" class="cert-img"/>
+        <div class="cert-b"><div class="cert-n">Flipkart GRID 6.0 Software Development Track</div><div class="cert-i">Flipkart</div><div class="cert-d">July 2024</div></div>
+      </div>
+      <div class="cert-c rv d1">
+        <img src="Assets/Cirtificate/joshiana.jpg" alt="Joshiana Certificate" class="cert-img"/>
+        <div class="cert-b"><div class="cert-n">Committee Head, Stage &amp; Decoration — Joshiana 13.0</div><div class="cert-i">St. Joseph Engineering College</div><div class="cert-d">2024</div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Navbar background change on scroll
-    const nav = document.querySelector('nav');
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 50) {
-        nav.classList.add('bg-slate-900/80', 'shadow-cyan-500/20');
-      } else {
-        nav.classList.remove('bg-slate-900/80', 'shadow-cyan-500/20');
-      }
-    });
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="ct-box">
+      <span class="eye" style="justify-content:center;">Let's Connect</span>
+      <h2 class="rv">Ready to build something <span>great</span> together?</h2>
+      <p class="rv">I'm open to full-time roles, freelance projects, and exciting collaborations. Whether you have an idea or an opportunity, I'd love to hear from you.</p>
+      <div class="ct-grid rv">
+        <a href="mailto:manvithpoojary63@gmail.com" class="cl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          manvithpoojary63@gmail.com
+        </a>
+        <a href="tel:+917676644327" class="cl">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 2h3a2 2 0 012 1.72 12.05 12.05 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.05 12.05 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 76766 44327
+        </a>
+        <a href="https://linkedin.com/in/manvithpoojary" target="_blank" class="cl">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.762 0-5 2.238-5 5v14c0 2.762 2.238 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.762-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.273c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.783 1.75-1.75 1.75zm13.5 11.273h-3v-5.454c0-1.299-.025-2.974-1.814-2.974-1.814 0-2.093 1.418-2.093 2.887v5.541h-3v-10h2.881v1.367h.041c.401-.757 1.382-1.556 2.843-1.556 3.039 0 3.601 2.002 3.601 4.604v5.585z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/Manvith-003" target="_blank" class="cl">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.478 2 2 6.478 2 12c0 4.418 2.867 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.239-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.455-1.159-1.11-1.468-1.11-1.468-.909-.621.07-.609.07-.609 1.004.07 1.533 1.032 1.533 1.032.892 1.53 2.341 1.089 2.911.833.092-.647.35-1.09.636-1.342-2.221-.254-4.555-1.111-4.555-4.944 0-1.091.39-1.983 1.029-2.681-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.563 9.563 0 0112 6.844c.77.004 1.546.105 2.269.307 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.698 1.028 1.59 1.028 2.681 0 3.844-2.337 4.688-4.566 4.938.359.309.679.919.679 1.852 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C19.135 20.163 22 16.418 22 12c0-5.522-4.478-10-10-10z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <div class="ct-res rv">
+        <a href="Assets/Manvith-Resume.pdf" target="_blank" class="btn btn-s">
+          Download Resume
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Fade-in animation observer
-    const observer = new IntersectionObserver(function(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('animate-fade-in');
-      });
-    }, { threshold: 0.1 });
+<!-- FOOTER -->
+<footer>
+  <div class="ft-w">
+    <p class="ft-c">© 2026 <span>Manvith Poojary</span>. Designed &amp; built with care.</p>
+    <div class="ft-s">
+      <a href="https://github.com/Manvith-003" target="_blank" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.478 2 2 6.478 2 12c0 4.418 2.867 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.239-.009-.868-.013-1.703-2.782.604-3.369-1.341-3.369-1.341-.455-1.159-1.11-1.468-1.11-1.468-.909-.621.07-.609.07-.609 1.004.07 1.533 1.032 1.533 1.032.892 1.53 2.341 1.089 2.911.833.092-.647.35-1.09.636-1.342-2.221-.254-4.555-1.111-4.555-4.944 0-1.091.39-1.983 1.029-2.681-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.563 9.563 0 0112 6.844c.77.004 1.546.105 2.269.307 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.698 1.028 1.59 1.028 2.681 0 3.844-2.337 4.688-4.566 4.938.359.309.679.919.679 1.852 0 1.336-.012 2.417-.012 2.747 0 .267.18.577.688.48C19.135 20.163 22 16.418 22 12c0-5.522-4.478-10-10-10z"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/manvithpoojary" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.762 0-5 2.238-5 5v14c0 2.762 2.238 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.762-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.273c-.966 0-1.75-.783-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.783 1.75-1.75 1.75zm13.5 11.273h-3v-5.454c0-1.299-.025-2.974-1.814-2.974-1.814 0-2.093 1.418-2.093 2.887v5.541h-3v-10h2.881v1.367h.041c.401-.757 1.382-1.556 2.843-1.556 3.039 0 3.601 2.002 3.601 4.604v5.585z"/></svg>
+      </a>
+      <a href="mailto:manvithpoojary63@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
 
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
+<script>
+  // Nav sticky
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('stuck', window.scrollY > 30));
 
-    // Mobile menu toggle
-    const navToggle = document.getElementById('nav-toggle');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navOpenIcon = document.getElementById('nav-toggle-open');
-    const navCloseIcon = document.getElementById('nav-toggle-close');
+  // Hamburger
+  const ham = document.getElementById('ham');
+  const mob = document.getElementById('mob');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('o');
+    mob.classList.toggle('o');
+    document.body.style.overflow = mob.classList.contains('o') ? 'hidden' : '';
+  });
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    ham.classList.remove('o');
+    mob.classList.remove('o');
+    document.body.style.overflow = '';
+  }));
 
-    navToggle.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('hidden');
-      mobileMenu.classList.toggle('max-h-0');
-      mobileMenu.classList.toggle('max-h-screen');
-      navToggle.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-      navOpenIcon.classList.toggle('hidden');
-      navCloseIcon.classList.toggle('hidden');
-      navOpenIcon.classList.toggle('rotate-180');
-      navCloseIcon.classList.toggle('rotate-180');
-    });
+  // Reveal
+  const io = new IntersectionObserver(entries =>
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); }),
+    { threshold: 0.07, rootMargin: '0px 0px -28px 0px' }
+  );
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-    // Close menu when clicking a navigation link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden', 'max-h-0');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navOpenIcon.classList.remove('hidden');
-        navCloseIcon.classList.add('hidden');
-      });
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener('click', (event) => {
-      const isClickInsideMenu = mobileMenu.contains(event.target);
-      const isClickOnToggle = navToggle.contains(event.target);
-      if (!isClickInsideMenu && !isClickOnToggle && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden', 'max-h-0');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navOpenIcon.classList.remove('hidden');
-        navCloseIcon.classList.add('hidden');
-      }
-    });
-  </script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a =>
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    })
+  );
+</script>
 </body>
 </html>
